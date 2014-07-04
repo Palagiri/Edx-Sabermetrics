@@ -1,0 +1,7 @@
+We can use the Aggregate function in SQL queries : Following is to find Average of (H) 
+>>select avg (H) as AVG_H, 
+yearID, 
+H/AB as BA 
+from Batting 
+Where playerID = 'canoro01';
+
