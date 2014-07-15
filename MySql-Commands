@@ -5,3 +5,39 @@ H/AB as BA
 from Batting 
 Where playerID = 'canoro01';
 
+#Usage of ORDER BY ,
+#HAVING
+# GROUP BY
+>>select playerID, SUM(HR) as HR_CAREER
+from Batting 
+where teamID = 'OAK'
+Group by playerID
+having HR_CAREER >= 100
+limit 10
+
+#There are many aggregate functions
+SUM(<column>)
+AVERAGE(<column>)
+COUNT(<coulmn>)
+MIN(<column)
+MAX(<column>)
+STDDEV(<column>)
+VARIENCE(<column)
+from <table name>
+
+#HAVING is a SQL syntax that can be used on the Aliases
+#Aliases can not be used in the where clause
+#order by should always be used in the last.
+>>SELECT playerID, yearID, teamID, AB, H, HR, 
+    H/AB AS BA, 
+    (H+BB+HBP)/(AB+BB+HBP+SF) AS OBP, 
+    (H+2B+2*3B+3*HR)/AB AS SLG
+FROM Batting
+WHERE yearID = 2013 AND AB > 50
+HAVING SLG >= 0.450
+ORDER BY SLG DESC
+
+
+
+SELECT ((H+BB+HBP)/(AB+BB+HBP+SF) + (H+2B+2*3B+3*HR)/AB)) as OPS FROM Batting WHERE yearID=1969 and playerID='jonescl01' 
+
