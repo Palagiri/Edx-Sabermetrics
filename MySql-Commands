@@ -38,6 +38,14 @@ HAVING SLG >= 0.450
 ORDER BY SLG DESC
 
 
-
 SELECT ((H+BB+HBP)/(AB+BB+HBP+SF) + (H+2B+2*3B+3*HR)/AB)) as OPS FROM Batting WHERE yearID=1969 and playerID='jonescl01' 
+
+sql command to find the differnces between time variables.
+select starttime,endtime,sessionendstatus,SESSIONENDTERMTEXTFULL  
+from datasessions where DSINTERVALTONUM(endtime - starttime) > 5000;
+
+
+
+
+
 
