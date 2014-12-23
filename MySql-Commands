@@ -40,12 +40,19 @@ ORDER BY SLG DESC
 
 SELECT ((H+BB+HBP)/(AB+BB+HBP+SF) + (H+2B+2*3B+3*HR)/AB)) as OPS FROM Batting WHERE yearID=1969 and playerID='jonescl01' 
 
-sql command to find the differnces between time variables.
+>>sql command to find the differnces between time variables.
 select starttime,endtime,sessionendstatus,SESSIONENDTERMTEXTFULL  
 from datasessions where DSINTERVALTONUM(endtime - starttime) > 5000;
 
+>>how to use round function avg and case :
 
-
-
+select distinct starting_rat, 
+round(avg((case when STARTING_LTERSRP is not null then '1' else '0' end))*100,2)||'%' LTEEvent, 
+round(avg((case when STARTING_UMTSRSCP is not null then '1' else '0' end))*100,2)||'%' UMTSEvent, 
+round(avg((case when STARTING_GSMRSSI is not null then '1' else '0' end))*100,2)||'%' GSMEvent
+from voicecalls 
+where callduration >0 and 
+(starting_rat != '32' or starting_rat is null)
+group by starting_rat order by starting_rat;
 
 
